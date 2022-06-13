@@ -7,7 +7,7 @@ class TestView(generics.GenericAPIView):
     serializer_class = TestSerializer
     queryset = Test.objects.all()
     def get(self, request):
-        data = self.serializer_class(self.queryset, many=True).data
+        data = self.serializer_class(self.get_queryset(), many=True).data
 
         return Response(data)
 
